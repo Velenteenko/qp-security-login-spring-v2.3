@@ -10,6 +10,7 @@
 
     <security:http auto-config="true" use-expressions="true">
         <security:intercept-url pattern="/" access="permitAll"/>
+        <security:intercept-url pattern="/api**" access="permitAll"/>
         <security:intercept-url pattern="/login" access="permitAll"/>
         <security:intercept-url pattern="/acessdenided.page403" access="permitAll"/>
         <security:intercept-url pattern="/home**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_ALL','ROLE_MET')" />

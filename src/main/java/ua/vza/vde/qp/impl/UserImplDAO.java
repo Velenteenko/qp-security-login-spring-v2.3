@@ -23,13 +23,8 @@ public class UserImplDAO implements IUserDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-//    @Autowired
-//    public void UserImplDAO (DataSource dataSource){
-//        this.jdbcTemplate = j;
-//    }
-
     @Override
-    public User getUserByName(String userLogin) {
+    public User getUserFioByLogin(String userLogin) {
         User user = new User();
         String sql = "SELECT details FROM users where username=?";
         String retFio = jdbcTemplate.queryForObject(sql,new Object[]{userLogin},String.class);

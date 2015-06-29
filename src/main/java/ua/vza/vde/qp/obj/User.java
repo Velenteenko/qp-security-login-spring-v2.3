@@ -16,4 +16,9 @@ public class User {
     public void setFio(String fio) {
         this.fio = fio;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuffer("fio: ").append(this.fio).toString();
+    }
 }

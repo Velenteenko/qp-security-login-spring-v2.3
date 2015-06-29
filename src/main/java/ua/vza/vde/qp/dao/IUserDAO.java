@@ -7,5 +7,5 @@ import ua.vza.vde.qp.obj.User;
  */
 public interface IUserDAO {
 
-    User getUserByName(String userLogin);
+    User getUserFioByLogin(String userLogin);
 }

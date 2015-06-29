@@ -33,8 +33,8 @@ public class HomeController {
     @Autowired
     ApplicationContext context;
 
-    @Autowired
-    UserImplDAO implDAO;
+//    @Autowired
+//    UserImplDAO implDAO;
 
     @RequestMapping(value = {"/home"}, method = RequestMethod.GET)
     public String homeSetUp(Model model)  {
@@ -49,9 +49,9 @@ public class HomeController {
 
 //        UserImplDAO dao =  (UserImplDAO)context.getBean("userImplDAO");
 
-        User user = implDAO.getUserByName(nameUser);
+//        User user = implDAO.getUserFioByLogin(nameUser);
 
-        model.addAttribute("fio", user.getFio());
+//        model.addAttribute("fio", user.getFio());
 
         return "home";
     }
