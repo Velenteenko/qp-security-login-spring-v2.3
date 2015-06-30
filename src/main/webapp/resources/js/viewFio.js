@@ -2,42 +2,37 @@
  * Created by SamsungR60P on 29.06.2015.
  */
 function getJSON(putUrl){
-    var httpReq = new XMLHttpRequest();
-    httpReq.open('GET',putUrl,true);
-    httpReq.send();
-    return httpReq.responseText;
-}
-
-function getFioFromUserLoginToElementId(putUrl, putElem){
-    var jsonObj = JSON.parse(getJSON(putUrl));
-    document.getElementById(putElem).innerHTML =
-        jsonObj.fio;
-}
-
-function getFioFromUserLoginToString(putUrl){
-    var jsonObj = JSON.parse(getJSON(putUrl));
-    return jsonObj.fio;
-}
-
-function CallURL(){
-    $.ajax({
-        url: 'https://www.googleapis.com/freebase/v1/text/en/bob_dylan',
-        type: "GET",
-        dataType: "text",
-        async:false,
-        success: function (msg) {
-            JsonpCallback(msg);
-        },
-        error: function () {
-            ErrorFunction();
+    var xmlhttp = new XMLHttpRequest();
+    var url = putUrl;
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            readJson(xmlhttp.responseText);
         }
-
-    });
-
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 }
 
-function JsonpCallback(json)
-{
-    document.getElementById('summary').innerHtml=json.result;
+function readJson(response){
+    var arr = JSON.parse(response);
+    var out = arr.fio;
+    document.getElementById("id01").innerHTML = out;
+}
 
+function getFioFromJson(urlPath, idElem){
+    $(document).ready(function() {
+        $.ajax({
+            url: urlPath,
+            //force to handle it as text
+            dataType: "text",
+            success: function(data) {
+                //data downloaded so we call parseJSON function
+                //and pass downloaded data
+                var json = $.parseJSON(data);
+                //now json variable contains data in json format
+                //let's display a few items
+                $('#'+idElem).html('Fio user: ' + json.fio);
+            }
+        });
+    });
 }

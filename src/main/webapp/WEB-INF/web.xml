@@ -16,13 +16,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--<listener>-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/login-servlet.xml, WEB-INF/login-security.xml, WEB-INF/login-context.xml</param-value>
+        <param-value>WEB-INF/login-servlet.xml, WEB-INF/login-security.xml, WEB-INF/login-context-local.xml</param-value>
     </context-param>
 
     <listener>
@@ -44,9 +41,14 @@
         <!--<welcome-file>login.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/views/404page.jsp</location>
+    </error-page>
+
     <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>../../webapp/views/404page.jsp</location>-->
+        <!--<error-code>403</error-code>-->
+        <!--<location>/views/403page.jsp</location>-->
     <!--</error-page>-->
 
 </web-app>

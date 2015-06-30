@@ -26,8 +26,8 @@ public class UserRestService {
         return user;
     }
 
-    @RequestMapping("/getFio/{putUserLogin}")
-    public User getFioFromLoginPathParam(@PathVariable("putUserLogin") String userLogin){
+    @RequestMapping("/getFio/{UserLogin}")
+    public User getFioFromLoginPathParam(@PathVariable("UserLogin") String userLogin){
         User user = userDAO.getUserFioByLogin(userLogin);
         return user;
     }

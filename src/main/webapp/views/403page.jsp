@@ -25,7 +25,7 @@
 <div id="error-area">
     <h2>Доступ закрыт! Что - то пошло не так...</h2>
     <p class="alert">${msg}</p>
-    <a href="<spring:url value="/login.jsp"/>" class="btn btn-info" role="button" >${logIn}</a>
+    <a href="<spring:url value="/login"/>" class="btn btn-info" role="button" >${logIn}</a>
 </div>
 
 </body>
