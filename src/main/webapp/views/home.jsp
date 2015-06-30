@@ -20,6 +20,7 @@
 <body>
     <script>
         getFioFromJson("/QPSec/api/userData/getFio/${username}", 'id01');
+        <%--getJSON("/QPSec/api/userData/getFio/${username}");--%>
     </script>
 
     <a href="<c:url value="/j_spring_security_logout"/>"> Logout </a><br/>

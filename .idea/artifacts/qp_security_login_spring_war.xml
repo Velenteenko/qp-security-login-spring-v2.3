@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="qp-security-login-spring:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="spring-login.war">
+    <root id="archive" name="QP.war">
       <element id="artifact" artifact-name="qp-security-login-spring:war exploded" />
     </root>
   </artifact>
