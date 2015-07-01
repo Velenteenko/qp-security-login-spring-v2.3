@@ -31,7 +31,7 @@ function getFioFromJson(urlPath, idElem){
                 var json = $.parseJSON(data);
                 //now json variable contains data in json format
                 //let's display a few items
-                $('#'+idElem).value('json.fio');
+                $('#'+idElem).value=json.fio;
                 //return json.fio;
             }
         });

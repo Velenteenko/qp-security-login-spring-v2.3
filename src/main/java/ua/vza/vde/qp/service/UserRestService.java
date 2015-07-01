@@ -1,10 +1,7 @@
 package ua.vza.vde.qp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.vza.vde.qp.dao.IUserDAO;
 import ua.vza.vde.qp.obj.User;
 
@@ -44,7 +41,7 @@ public class UserRestService {
 //    @GET
 //    @Path("getFio/{userLogin}")
 //    @Produces("application/json")
-    public User getFioFromLoginPathParam(@PathParam("userLogin") String userLogin){
+    public User getFioFromLoginPathParam(@PathVariable("userLogin") String userLogin){
         User user = userDAO.getUserFioByLogin(userLogin);
         return user;
 //        return Json.createObjectBuilder().add("fio", user.getFio()).build();

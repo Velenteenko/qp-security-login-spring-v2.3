@@ -8,12 +8,13 @@
 <head lang="ru">
     <meta charset="UTF-8">
     <title>Качество продукции</title>
-    <%--URL values--%>
+    <%--resources paths--%>
     <spring:url value="/resources/css/style.css" var="style"/>
     <spring:url value="/resources/css/jquery/jquery-ui.css" var="jqueryuicss"/>
     <spring:url value="/resources/js/JQuery.js" var="jquery"/>
     <spring:url value="/resources/js/functions.js" var="functions"/>
     <spring:url value="/resources/js/jquery-ui.js" var="jqueryuijs"/>
+    <spring:url value="/resources/js/viewFio.js" var="viewfiojs"/>
     <%--images paths--%>
     <spring:url value="/resources/img/loading.gif" var="loadgif"/>
     <spring:url value="/resources/img/Book%20Shelf.png" var="journalpng"/>
@@ -34,6 +35,7 @@
     <script type="application/javascript" src="${jquery}"></script>
     <script type="text/javascript" src="${functions}"></script>
     <script type="text/javascript" src="${jqueryuijs}"></script>
+    <script type="text/javascript" src="${viewfiojs}"></script>
 </head>
 <body>
 
@@ -218,8 +220,10 @@
                 <tr>
                     <td><p>ФИО предъявителя</p></td>
                     <td class="t_td_input">
-                        <script>getFioFromJson("/userData/getFio/${username}",'fiopred')</script>
-                        <input id="fiopred" type="text" id="fio_presenter" value="" disabled/>
+
+                        <script>getFioFromJson("/QP1/userData/getFio/${username}",'fio_presenter');</script>
+
+                        <input type="text" id="fio_presenter"  disabled/>
                     </td>
                 </tr>
                 <tr>
