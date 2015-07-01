@@ -1,5 +1,7 @@
 package ua.com.vza.work.doc.kay.quality.controllers;
 
+import ua.vza.vde.qp.service.UserRestService;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.Collections;
@@ -16,6 +18,7 @@ class ApplicationConfig extends Application {
     public ApplicationConfig() {
         HashSet<Class<?>> c = new HashSet<Class<?>>();
         c.add(ServiceController.class);
+        c.add(UserRestService.class);
         classes = Collections.unmodifiableSet(c);
     }
 

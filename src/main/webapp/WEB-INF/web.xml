@@ -19,7 +19,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/login-servlet.xml, WEB-INF/login-security.xml, WEB-INF/login-context-local.xml</param-value>
+        <param-value>WEB-INF/login-servlet.xml, WEB-INF/login-security.xml, WEB-INF/login-context.xml</param-value>
     </context-param>
 
     <listener>

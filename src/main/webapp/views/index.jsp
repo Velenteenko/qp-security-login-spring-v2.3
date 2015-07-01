@@ -8,16 +8,41 @@
 <head lang="ru">
     <meta charset="UTF-8">
     <title>Качество продукции</title>
-    <link rel="stylesheet" href="/resources/css/style.css">
-    <link rel="stylesheet" href="/resources/css/jquery/jquery-ui.css">
-    <script type="application/javascript" src="/resources/js/JQuery.js"></script>
-    <script type="text/javascript" src="/resources/js/functions.js"></script>
-    <script type="text/javascript" src="/resources/js/jquery-ui.js"></script>
+    <%--URL values--%>
+    <spring:url value="/resources/css/style.css" var="style"/>
+    <spring:url value="/resources/css/jquery/jquery-ui.css" var="jqueryuicss"/>
+    <spring:url value="/resources/js/JQuery.js" var="jquery"/>
+    <spring:url value="/resources/js/functions.js" var="functions"/>
+    <spring:url value="/resources/js/jquery-ui.js" var="jqueryuijs"/>
+    <%--images paths--%>
+    <spring:url value="/resources/img/loading.gif" var="loadgif"/>
+    <spring:url value="/resources/img/Book%20Shelf.png" var="journalpng"/>
+    <spring:url value="/resources/img/add.png" var="imgadd"/>
+    <spring:url value="/resources/img/user.png" var="imguser"/>
+    <%--views paths--%>
+    <spring:url value="/views/all.jsp" var="v_all"/>
+    <spring:url value="/views/metall.jsp" var="v_metal"/>
+    <spring:url value="/views/complect.jsp" var="v_complect"/>
+    <spring:url value="/views/chemistry.jsp" var="v_chemistry"/>
+    <spring:url value="/views/nometall.jsp" var="v_nometal"/>
+    <spring:url value="/views/setka.jsp" var="v_setka"/>
+    <spring:url value="/views/metiz.jsp" var="v_metiz"/>
+    <%--response param from views--%>
+
+    <link rel="stylesheet" href="${style}">
+    <link rel="stylesheet" href="${jqueryuicss}">
+    <script type="application/javascript" src="${jquery}"></script>
+    <script type="text/javascript" src="${functions}"></script>
+    <script type="text/javascript" src="${jqueryuijs}"></script>
 </head>
 <body>
+
+<%--<c:set var="loginuser" scope="page" value=/>--%>
+<%--<script>getFioFromJson("/userData/getFio/${username}")</script>--%>
+
 <!--LOADING-->
 <div id="loading_wrapper">
-    <p>Загрузка <img src="/resources/img/loading.gif"/></p>
+    <p>Загрузка <img src="${loadgif}"/></p>
 </div>
 <!--HEADER-->
 <header id="header" class="header">
@@ -31,23 +56,23 @@
         <!--NAVIGATION-->
         <nav>
             <ul class="nav">
-                <li><a href="" class="mark" title="Журналы"><img src="/resources/img/Book%20Shelf.png"/></a>
+                <li><a href="" class="mark" title="Журналы"><img src="${journalpng}"/></a>
                     <ul class="sub-nav">
-                        <li><a href="/views/all.jsp" title="Вся продукция">Вся продукция</a></li>
-                        <li><a href="/views/metall.jsp" title="Металл (черный и цветной)">Металл (черный и цветной)</a>
+                        <li><a href="${v_all}" title="Вся продукция">Вся продукция</a></li>
+                        <li><a href="${v_metal}" title="Металл (черный и цветной)">Металл (черный и цветной)</a>
                         </li>
-                        <li><a href="/views/complect.jsp" title="Комплектующие">Комплектующие</a></li>
-                        <li><a href="/views/chemistry.jsp" title="Химия, ГСМ">Химия, ГСМ</a></li>
-                        <li><a href="/views/nometall.jsp" title="Неметаллические материалы">Неметаллические
+                        <li><a href="${v_complect}" title="Комплектующие">Комплектующие</a></li>
+                        <li><a href="${v_chemistry}" title="Химия, ГСМ">Химия, ГСМ</a></li>
+                        <li><a href="${v_nometal}" title="Неметаллические материалы">Неметаллические
                             материалы</a></li>
-                        <li><a href="/views/setka.jsp" title="Сетка, лента, проволка">Сетка, лента, проволка</a></li>
-                        <li><a href="/views/metiz.jsp" title="Метизы">Метизы</a></li>
+                        <li><a href="${v_setka}" title="Сетка, лента, проволка">Сетка, лента, проволка</a></li>
+                        <li><a href="${v_metiz}" title="Метизы">Метизы</a></li>
                     </ul>
                 </li>
-                <li><a href="#openModal_potrebitel" title="Добавить"><img src="/resources/img/add.png"/></a></li>
-                <li><a href="" title="Личный кабинет"><img src="/resources/img/user.png"/></a>
+                <li><a href="#openModal_potrebitel" title="Добавить"><img src="${imgadd}"/></a></li>
+                <li><a href="" title="Личный кабинет"><img src="${imguser}"/></a>
                     <ul class="sub-nav">
-                        <li><a href="" title="Выйти">Выйти</a></li>
+                        <li><a id="login_l" href="" title="Выйти">Выйти</a></li>
                     </ul>
                 </li>
             </ul>
@@ -58,22 +83,22 @@
 <div id="content" class="content">
     <!--LIST MAGAZIN-->
     <div id="list_magazin" class="list_magazin">
-        <a href="/views/metall.jsp" title="Металл (черный и цветной)">
+        <a href="${v_metal}" title="Металл (черный и цветной)">
             <article>Металл (черный и цветной)</article>
         </a>
-        <a href="/views/complect.jsp" title="Комплектующие">
+        <a href="${v_complect}" title="Комплектующие">
             <article>Комплектующие</article>
         </a>
-        <a href="/views/chemistry.jsp" title="Химия, ГСМ">
+        <a href="${v_chemistry}" title="Химия, ГСМ">
             <article>Химия, ГСМ</article>
         </a>
-        <a href="/views/nometall.jsp" title="Неметаллические материалы">
+        <a href="${v_nometal}" title="Неметаллические материалы">
             <article>Неметаллические материалы</article>
         </a>
-        <a href="/views/setka.jsp" title="Сетка, лента, проволка">
+        <a href="${v_setka}" title="Сетка, лента, проволка">
             <article>Сетка, лента, проволка</article>
         </a>
-        <a href="/views/metiz.jsp" title="Метизы">
+        <a href="${v_metiz}" title="Метизы">
             <article>Метизы</article>
         </a>
     </div>
@@ -193,7 +218,8 @@
                 <tr>
                     <td><p>ФИО предъявителя</p></td>
                     <td class="t_td_input">
-                        <input type="text" id="fio_presenter" value="ФИО" disabled/>
+                        <script>getFioFromJson("/userData/getFio/${username}",'fiopred')</script>
+                        <input id="fiopred" type="text" id="fio_presenter" value="" disabled/>
                     </td>
                 </tr>
                 <tr>
@@ -205,7 +231,7 @@
                 <tr>
                     <td><p>Автор последнего изменения</p></td>
                     <td class="t_td_input">
-                        <input type="text" id="fio_last_modify" value="ФИО" disabled/>
+                        <input type="text" id="fio_last_modify" value="${username}" disabled/>
                     </td>
                 </tr>
                 <tr>
@@ -223,7 +249,7 @@
                 <tr>
                     <td><p>ФИО контролера</p></td>
                     <td class="t_td_input">
-                        <input type="text" id="fio_controller" value="ФИО" disabled/>
+                        <input type="text" id="fio_controller" value="${username}" disabled/>
                     </td>
                 </tr>
                 <tr>
@@ -246,6 +272,7 @@
         </form>
     </div>
 </div>
+<%--<script></script>--%>
 <script type="text/javascript">$(document).ready(
         getAllMagazine(),
         getAllStdType(),
@@ -261,6 +288,7 @@
         getAllMeasure(),
         getLocation(),
         createProduct(),
+        <%--getFioFromJson('/userData/getFio/${username}','login_l'),--%>
         paginator());
 </script>
 </body>

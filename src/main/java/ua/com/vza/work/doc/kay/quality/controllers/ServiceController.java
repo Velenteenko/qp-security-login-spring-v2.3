@@ -1,8 +1,13 @@
 package ua.com.vza.work.doc.kay.quality.controllers;
 
-import jdk.nashorn.internal.parser.JSONParser;
+//import jdk.nashorn.internal.parser.JSONParser;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import ua.com.vza.work.doc.kay.quality.crud.*;
 import ua.com.vza.work.doc.kay.quality.entity.*;
+import ua.vza.vde.qp.dao.IUserDAO;
+import ua.vza.vde.qp.impl.UserImplDAO;
+import ua.vza.vde.qp.obj.User;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -15,11 +20,11 @@ import javax.ws.rs.core.MediaType;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by kycenko on 16.06.15.
  */
+@SuppressWarnings("SpringJavaAutowiringInspection")
 @Path("service")
 @RequestScoped
 public class ServiceController {
@@ -34,6 +39,19 @@ public class ServiceController {
     @Inject private SprLocationCrud slc;
     @Inject private ProductCrud pc;
     @Inject private ProductIncomeCrud pic;
+
+//    @Autowired
+//    private IUserDAO userDAO;
+
+//    @Path("getFio")
+//    @GET
+//    @Produces("application/json")
+//    public JsonObject getUserFioFromLoginRequersParam(@QueryParam(value = "login") String userLogin){
+//        UserImplDAO dao = new UserImplDAO();
+//        User user = dao.getUserFioByLogin(userLogin);
+//
+//        return Json.createObjectBuilder().add("fio", user.getFio()).build();
+//    }
 
     @Path("all_product_name")
     @GET

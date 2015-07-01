@@ -1,4 +1,4 @@
-package ua.com.vza.work.doc.kay.quality;
+package ua.com.vza.work.doc.kay.quality.servlets;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;

@@ -1,13 +1,12 @@
 package ua.vza.vde.qp.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Component;
 import ua.vza.vde.qp.dao.IUserDAO;
 import ua.vza.vde.qp.obj.User;
 
+import javax.ejb.Stateless;
 import javax.sql.DataSource;
 
 /**
