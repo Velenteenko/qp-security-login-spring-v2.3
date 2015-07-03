@@ -1,39 +1,38 @@
 /**
  * Created by SamsungR60P on 29.06.2015.
  */
-function getJSON(putUrl){
+function getJSON(putUrl, idElement){
     var xmlhttp = new XMLHttpRequest();
     var url = putUrl;
     xmlhttp.onreadystatechange=function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            readJson(xmlhttp.responseText);
+            readJson(xmlhttp.responseText, idElement);
         }
     }
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
 
-function readJson(response){
+function readJson(response, idElem){
     var arr = JSON.parse(response);
     var out = arr.fio;
-    document.getElementById("id01").innerHTML = out;
+    document.getElementById(idElem).innerHTML = out;
 }
 
 function getFioFromJson(urlPath, idElem){
     $(document).ready(function() {
         $.ajax({
             url: urlPath,
-            //force to handle it as text
+            type: "GET",
             dataType: "text",
             success: function(data) {
-                //data downloaded so we call parseJSON function
-                //and pass downloaded data
-                var json = $.parseJSON(data);
-                //now json variable contains data in json format
-                //let's display a few items
-                $('#'+idElem).value=json.fio;
+                var jsonparse = $.parseJSON(data);
+                //var parseData ='';
+                //parseData = jsonparse.fio;
+                $('#'+idElem).val(jsonparse.fio);
                 //return json.fio;
             }
         });
     });
 }
+

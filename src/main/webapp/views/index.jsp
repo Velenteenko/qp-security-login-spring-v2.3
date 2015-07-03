@@ -21,13 +21,13 @@
     <spring:url value="/resources/img/add.png" var="imgadd"/>
     <spring:url value="/resources/img/user.png" var="imguser"/>
     <%--views paths--%>
-    <spring:url value="/views/all.jsp" var="v_all"/>
-    <spring:url value="/views/metall.jsp" var="v_metal"/>
-    <spring:url value="/views/complect.jsp" var="v_complect"/>
-    <spring:url value="/views/chemistry.jsp" var="v_chemistry"/>
-    <spring:url value="/views/nometall.jsp" var="v_nometal"/>
-    <spring:url value="/views/setka.jsp" var="v_setka"/>
-    <spring:url value="/views/metiz.jsp" var="v_metiz"/>
+    <spring:url value="/all" var="v_all"/>
+    <spring:url value="/metal" var="v_metal"/>
+    <spring:url value="/complect" var="v_complect"/>
+    <spring:url value="/himiya" var="v_chemistry"/>
+    <spring:url value="/nemetal" var="v_nometal"/>
+    <spring:url value="/setkaLentaProvoloka" var="v_setka"/>
+    <spring:url value="/metiz" var="v_metiz"/>
     <%--response param from views--%>
 
     <link rel="stylesheet" href="${style}">
@@ -52,6 +52,7 @@
         <a href="/QP"><h2>Качество продукции</h2></a>
         <!--SEARCH-->
         <form id="search_form" class="search_form" name="search_form">
+            <%--<input type="text" id="inpt_search2" class="inpt_search" name="inpt_search22"/>--%>
             <input type="text" id="inpt_search" class="inpt_search" name="inpt_search" placeholder="Введите поисковый запрос"/>
             <button id="btn_search" class="btn_search" name="btn_search">Поиск</button>
         </form>
@@ -219,11 +220,12 @@
                 </tr>
                 <tr>
                     <td><p>ФИО предъявителя</p></td>
+
                     <td class="t_td_input">
-
-                        <script>getFioFromJson("/QP1/userData/getFio/${username}",'fio_presenter');</script>
-
-                        <input type="text" id="fio_presenter"  disabled/>
+                        <input type="text" id="fio_presenter" disabled/>
+                        <script>
+                            getFioFromJson('/QP1/userData/getFio/${username}','fio_presenter');
+                        </script>
                     </td>
                 </tr>
                 <tr>
@@ -235,7 +237,10 @@
                 <tr>
                     <td><p>Автор последнего изменения</p></td>
                     <td class="t_td_input">
-                        <input type="text" id="fio_last_modify" value="${username}" disabled/>
+
+                        <%--<script> getJSON("/QP1/userData/getFio/${username}","fio_last_modify"); </script>--%>
+
+                        <input type="text" id="fio_last_modify" disabled/>
                     </td>
                 </tr>
                 <tr>
