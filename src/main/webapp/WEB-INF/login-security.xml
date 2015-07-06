@@ -14,7 +14,8 @@
         <security:intercept-url pattern="/login" access="permitAll"/>
         <security:intercept-url pattern="/acessdenided.page403" access="permitAll"/>
         <!--<security:intercept-url pattern="/home**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_ALL','ROLE_MET')" />-->
-        <security:intercept-url pattern="/index**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_ALL','ROLE_MET')"/>
+        <!--<security:intercept-url pattern="/index**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_ALL','ROLE_MET')"/>-->
+        <security:intercept-url pattern="/index**" access="isAuthenticated()"/>
         <security:intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
 
         <security:form-login login-page="/login"

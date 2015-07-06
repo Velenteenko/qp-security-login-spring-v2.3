@@ -49,7 +49,10 @@
 <!--HEADER-->
 <header id="header" class="header">
     <div id="header_content" class="header_content">
-        <a href="/QP"><h2>Качество продукции</h2></a>
+        <sec:authorize access="isAuthenticated()">
+        <a href="/QP/index"><h2>Качество продукции</h2></a>
+        </sec:authorize>
+        <%--<a href="/QP"><h2>Качество продукции</h2></a>--%>
         <!--SEARCH-->
         <form id="search_form" class="search_form" name="search_form">
             <%--<input type="text" id="inpt_search2" class="inpt_search" name="inpt_search22"/>--%>
@@ -61,22 +64,43 @@
             <ul class="nav">
                 <li><a href="" class="mark" title="Журналы"><img src="${journalpng}"/></a>
                     <ul class="sub-nav">
+
                         <li><a href="${v_all}" title="Вся продукция">Вся продукция</a></li>
-                        <li><a href="${v_metal}" title="Металл (черный и цветной)">Металл (черный и цветной)</a>
-                        </li>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_METAL">
+                        <li><a href="${v_metal}" title="Металл (черный и цветной)">Металл (черный и цветной)</a></li>
+                        </sec:authorize>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_COMPL">
                         <li><a href="${v_complect}" title="Комплектующие">Комплектующие</a></li>
+                        </sec:authorize>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_CHEMISTRY">
                         <li><a href="${v_chemistry}" title="Химия, ГСМ">Химия, ГСМ</a></li>
+                        </sec:authorize>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_NONMETAL">
                         <li><a href="${v_nometal}" title="Неметаллические материалы">Неметаллические
                             материалы</a></li>
+                        </sec:authorize>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_SETKA">
                         <li><a href="${v_setka}" title="Сетка, лента, проволка">Сетка, лента, проволка</a></li>
+                        </sec:authorize>
+
+                        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_METIZ">
                         <li><a href="${v_metiz}" title="Метизы">Метизы</a></li>
+                        </sec:authorize>
                     </ul>
                 </li>
                 <li><a href="#openModal_potrebitel" title="Добавить"><img src="${imgadd}"/></a></li>
                 <li><a href="" title="Личный кабинет"><img src="${imguser}"/></a>
                     <ul class="sub-nav">
-                        <li><a id="login_l" href="" title="Выйти">Выйти</a></li>
+                        <li><a id="login_l" href="<c:url value="/j_spring_security_logout"/>" title="Выйти">Выйти</a></li>
                     </ul>
+                    <script>
+                    getFioFromJsonForLogin('/QP/userData/getFio/${username}','login_l');
+                    </script>
                 </li>
             </ul>
         </nav>
@@ -86,24 +110,42 @@
 <div id="content" class="content">
     <!--LIST MAGAZIN-->
     <div id="list_magazin" class="list_magazin">
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_METAL">
         <a href="${v_metal}" title="Металл (черный и цветной)">
             <article>Металл (черный и цветной)</article>
         </a>
+        </sec:authorize>
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_NONMETAL">
         <a href="${v_complect}" title="Комплектующие">
             <article>Комплектующие</article>
         </a>
+        </sec:authorize>
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_CHEMISTRY">
         <a href="${v_chemistry}" title="Химия, ГСМ">
             <article>Химия, ГСМ</article>
         </a>
+        </sec:authorize>
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_COMPL">
         <a href="${v_nometal}" title="Неметаллические материалы">
             <article>Неметаллические материалы</article>
         </a>
+        </sec:authorize>
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_SETKA">
         <a href="${v_setka}" title="Сетка, лента, проволка">
             <article>Сетка, лента, проволка</article>
         </a>
+        </sec:authorize>
+
+        <sec:authorize ifAnyGranted="ROLE_ALL,ROLE_METIZ">
         <a href="${v_metiz}" title="Метизы">
             <article>Метизы</article>
         </a>
+        </sec:authorize>
     </div>
     <!--LIST MAGAZIN END-->
     <h2>Вся продукция</h2>
@@ -224,7 +266,7 @@
                     <td class="t_td_input">
                         <input type="text" id="fio_presenter" disabled/>
                         <script>
-                            getFioFromJson('/QP1/userData/getFio/${username}','fio_presenter');
+                            getFioFromJson('/QP/userData/getFio/${username}','fio_presenter');
                         </script>
                     </td>
                 </tr>
@@ -298,6 +340,7 @@
         getLocation(),
         createProduct(),
         <%--getFioFromJson('/userData/getFio/${username}','login_l'),--%>
+
         paginator());
 </script>
 </body>
